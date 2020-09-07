@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700')
+
+$breakpoint: 601px
+
+=hundred
+  width: 100%
+
+=flex
+  display: flex
+
+=flexAJ($align, $justify)
+  +flex
+  align-items: $align
+  justify-content: $justify
+
+=direction($direction)
+  flex-direction: $direction
+
+*
+  font-family: 'Oswald'
+  transition: 100ms all ease-in-out
+  box-sizing: border-box
+
+.app
+  position: absolute
+  top: 0
+  left: 0
+  +hundred
+  min-height: 100vh
+
+.card
+  width: 100%
+  &:before
+    content: ''
+    display: block
+    +hundred
+    height: 60vh
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/435311/photo__mountains.jpg') no-repeat center
+    filter: saturate(35%)
+    background-size: cover
+
+.card-header
+  +hundred
+  margin: 0 auto
+  +flexAJ(center, space-between)
+  position: relative
+  top: -75px
+  +direction(column)
+  @media (min-width: $breakpoint)
+    max-width: 960px
+    +direction(row)
+  
+.card-main
+  margin: 0 auto
+  +flexAJ(center, space-around)
+  background-color: white
+  padding: 20px 10px
+  flex-direction: column
+  @media (min-width: $breakpoint)
+    +hundred
+    max-width: 960px
+    flex-direction: row
+    position: relative
+    top: -50px
+    padding: 10px 30px
+
+.hello
+  +flex
+  align-items: center
+  @media (min-width: 600px)
+    margin-left: 5%
+img
+  border-radius: 50%
+  width: 150px
+  height: auto
+
+.heading-box
+  +hundred
+  min-width: 270px
+  padding-left: 2%
+  h1, h3
+  @media (min-width: $breakpoint)
+    padding-left: 10%    
+  h1
+    font-size: 3em
+    top: -50px
+    margin: 0
+    margin-bottom: 5px
+    color: black
+  h3
+    font-weight: 2em
+    color: lighten(black, 40%)
+    top: -30px
+    font-weight: normal
+    margin: 0
+    margin-top: 5%
+    span
+      color: lighten(black, 60%)
+      margin-left: 2%
+    
+.button-box
+  +hundred
+  +flex
+  justify-content: center
+  padding-top: 5%
+  +direction(row)
+  @media (min-width: $breakpoint)
+    width: 30%
+    justify-content: flex-end
+    padding-right: 5%
+    padding-top: 0
+  a
+    display: block
+    background-color: white
+    border-radius: 50%
+      
+  i
+    border-radius: 50%
+    font-size: 54px
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4)
+    
+.activity
+  +flexAJ(center, flex-start)
+  +direction(column)
+  padding: 10px 0
+  text-align: center
+  border: 2px solid black
+  border-radius: 4px
+  margin: 5px
+  +hundred
+  *
+    display: block
+  @media (min-width: $breakpoint)
+    +direction(row)
+    +flexAJ(baseline, space-around)
+    *
+      display: inline
+      margin: 0 auto
+  &:hover
+    background-color: black
+    border: 2px solid white
+    color: white
+    cursor: pointer
+  .activity-name
+    text-transform: uppercase
+    @media (min-width: $breakpoint)
+      margin: 0
+  .index
+    width: 30px
+  i, span
+    font-size: 24px
+    margin: 10px 0
+    @media (min-width: $breakpoint)
+      font-size: 18px
+      margin: 0
+    
+  @keyframes spin
+    0%
+      transform: rotate(0deg)
+    100%
+      transform: rotate(90deg)
+  
+  @keyframes spinBack
+    0%
+      transform: rotate(90deg)
+    100%
+      transform: rotate(0deg)
