@@ -1,0 +1,54 @@
+language: node_js
+
+sudo: false
+dist: trusty
+
+git:
+    depth: 3
+
+node_js:
+    - '12'
+
+cache:
+    directories:
+        - node_modules
+        - packages/admin/node_modules
+        - packages/mobile/node_modules
+        - packages/proxy/node_modules
+        - packages/storefront/node_modules
+        - packages/storefront-base/node_modules
+        - packages/testing/node_modules
+
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-4.8
+
+before_install:
+    - npm i -g npm@latest
+    - npm i -g yarn@latest
+    - npm i -g lerna@latest
+
+install:
+    - git clone -c core.symlinks=true --recursive --depth=3 --branch=$TRAVIS_BRANCH https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+    - cd $TRAVIS_REPO_SLUG
+    - git checkout -qf $TRAVIS_COMMIT
+    - yarn install
+    - yarn bootstrap
+
+matrix:
+    include:
+        - env: PROJECT=packages/admin
+        - env: PROJECT=packages/mobile
+        - env: PROJECT=packages/proxy
+        - env: PROJECT=packages/storefront
+        - env: PROJECT=packages/storefront-base
+        - env: PROJECT=packages/testing
+
+before_script:
+    - cd $PROJECT
+
+script:
+    - yarn build

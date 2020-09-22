@@ -1,0 +1,9 @@
+{
+  "rules": [
+    { "pathname": "/admin", "dest": "http://localhost:3000/admin" },
+    { "pathname": "/health", "dest": "http://localhost:3000/health" },
+    { "pathname": "/shop-api", "dest": "http://localhost:3000/shop-api" },
+    { "pathname": "/sockjs-node", "dest": "http://localhost:3000/sockjs-node" },
+    { "pathname": "/**", "dest": "http://localhost:9000" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@bavaan/testing",
+  "version": "0.1.0",
+  "scripts": {
+    "test" : "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^4.8.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@bavaan/graphql",
+  "version": "0.1.0",
+  "browser": {
+    "@bavaan/graphql": "./"
+  },
+  "dependencies": {
+    "graphql-tag": "^2.10.3"
+  }
+}

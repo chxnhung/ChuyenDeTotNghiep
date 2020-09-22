@@ -1,0 +1,40 @@
+{
+  "name": "@bavaan/vendure-braintree-payment-plugin",
+  "version": "0.0.1",
+  "description": "A braintree payment plugin for Bavaan Marketplace Platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:coverage-ci": "jest --coverage && coveralls < coverage/lcov.info",
+    "build": "rimraf dist && tsc -p ./tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bavaan/vendure-braintree-payment-plugin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bavaan/vendure-braintree-payment-plugin/issues"
+  },
+  "homepage": "https://github.com/bavaan/vendure-braintree-payment-plugin#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "@types/ms": "^0.7.31",
+    "@types/node": "^14.0.13",
+    "coveralls": "^3.1.0",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "3.8.3"
+  },
+  "dependencies": {
+    "@vendure/core": "^0.13.0",
+    "braintree": "^2.23.0"
+  }
+}

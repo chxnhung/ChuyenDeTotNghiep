@@ -1,0 +1,15 @@
+{
+  "packages": [
+    "apps/*",
+    "libs/*",
+    "libs/admin-plugins/*"
+  ],
+  "version": "0.0.1",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "push": false
+    }
+  }
+}

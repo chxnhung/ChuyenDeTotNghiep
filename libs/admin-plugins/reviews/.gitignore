@@ -1,0 +1,4 @@
+/test/__data__
+node_modules/
+/dist
+/coverage/

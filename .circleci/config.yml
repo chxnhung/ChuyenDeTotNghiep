@@ -1,0 +1,60 @@
+version: 2.1
+
+orbs:
+  slack: circleci/slack@3.4.2
+
+executors:
+  default:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:12-browsers
+
+commands:
+  yarn_install:
+    description: "Install Dependencies"
+    steps:
+      - run: yarn install --frozen-lockfile --non-interactive
+      - save_cache:
+          key: bavaan-cache-node12-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+  restore_yarn_cache:
+    description: "Restore Cached Dependencies"
+    steps:
+      - restore_cache:
+          keys:
+            - bavaan-cache-node12-{{ checksum "yarn.lock" }}
+            - bavaan-cache-node12-
+  setup:
+    description: "Setup Executor"
+    steps:
+      - checkout
+      - restore_yarn_cache
+      - yarn_install
+
+jobs:
+  build-master:
+    executor: default
+    steps:
+      - setup
+      - run: yarn test
+  build-pr:
+    executor: default
+    steps:
+      - setup
+      - run: yarn test
+
+workflows:
+  version: 2.1
+  default_workflow:
+    jobs:
+      - build-master:
+          filters:
+            branches:
+            only:
+              - master
+      - build-pr:
+          filters:
+            branches:
+            ignore:
+              - master

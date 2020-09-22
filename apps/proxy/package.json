@@ -1,0 +1,10 @@
+{
+  "name": "@bavaan/proxy",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "micro-proxy -r proxy.json -p 8080 -H 0.0.0.0"
+  },
+  "devDependencies": {
+    "micro-proxy": "^1.1.0"
+  }
+}

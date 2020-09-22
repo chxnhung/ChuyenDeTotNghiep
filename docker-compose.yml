@@ -1,0 +1,50 @@
+version: '3.3'
+services:
+    proxy:
+        image: "traefik:1.7"
+        command: -c /dev/null --web --docker --docker.domain=leestyle.vn --logLevel=DEBUG --configFile=/etc/traefik/conf/acme.toml
+        ports:
+          - "80:80"
+          - "8080:8080"
+          - "443:443"
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+        labels:
+          - "traefik.frontend.rule=Host:traefik.swarajshop.staging.com"
+          - "traefik.port=8080"
+          - "traefik.enable=true"   
+        networks:
+          - proxy
+    admin-web:
+        container_name: admin-web
+        image: bavaan-admin-web:latest
+        build:
+            context: .
+            dockerfile: .deploy/admin-web/Dockerfile
+        environment:
+            NODE_ENV: production
+        restart: on-failure
+        labels:
+            - "traefik.frontend.rule=Host:swarajshop.staging.com"
+            - traefik.docker.network=proxy
+            - traefik.port=8080
+        ports:
+            - 8080
+            - 3000
+            - 9000
+        networks:
+            - proxy
+            - internal
+            - overlay
+volumes:
+    root_node_modules:
+    certificates:
+
+networks:
+    proxy:
+        external:
+            name: proxy
+    internal:
+        driver: bridge
+    overlay:
+        driver: bridge

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "url": "/shop/left-sidebar",
+    "bgImage": "/assets/images/hero-slider/hero-slider-three/banner-1.jpg"
+  },
+  {
+    "id": "2",
+    "url": "/shop/left-sidebar",
+    "bgImage": "/assets/images/hero-slider/hero-slider-three/banner-2.jpg"
+  },
+  {
+    "id": "3",
+    "url": "/shop/left-sidebar",
+    "bgImage": "/assets/images/hero-slider/hero-slider-three/banner-3.jpg"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "name": "@bavaan/marketplace",
+  "private": "true",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "lerna": "^3.22.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "libs/*",
+    "libs/admin-plugins/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn workspace @bavaan/admin run start\" \"yarn workspace @bavaan/storefront run dev\" \"yarn workspace @bavaan/proxy run start\"",
+    "build": "concurrently \"yarn workspace @bavaan/admin run build\" \"yarn workspace @bavaan/storefront run build\"",
+    "test": "yarn workspace @bavaan/testing run test"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0",
+    "yarn": ">=1.2"
+  }
+}
