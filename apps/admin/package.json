@@ -28,7 +28,7 @@
     "@vendure/asset-server-plugin": "^0.13.0",
     "@vendure/core": "^0.13.0",
     "@vendure/email-plugin": "^0.13.0",
-    "@vendure/ui-devkit": "^0.13.0",
+    "@bavaan/ui-devkit": "^0.13.0",
     "mysql": "^2.18.1",
     "pg": "^8.2.1",
     "sqlite3": "^4.2.0"

@@ -8,14 +8,8 @@
             "kill_timeout": 2000
         },
         {
-            "script": "yarn workspace @bavaan/storefront run dev",
+            "script": "yarn workspace @bavaan/storefront run start",
             "name": "@bavaan/storefront",
-            "max_memory_restart": "1G",
-            "kill_timeout": 2000
-        },
-        {
-            "script": "yarn workspace @bavaan/proxy run start",
-            "name": "@bavaan/proxy",
             "max_memory_restart": "1G",
             "kill_timeout": 2000
         }

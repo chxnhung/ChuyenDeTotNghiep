@@ -15,7 +15,7 @@ import {
 } from "./graphql/tier-price.resolver";
 import { TierPriceService } from "./graphql/tier-price.service";
 import path from 'path';
-import { AdminUiExtension } from '@vendure/ui-devkit/compiler';
+import { AdminUiExtension } from '@bavaan/ui-devkit/compiler';
 
 export type TierPriceInput = {
   productVariantId: ID;

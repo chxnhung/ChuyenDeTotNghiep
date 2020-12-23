@@ -7,7 +7,7 @@ import { ProductReviewAdminResolver } from './graphql/product-review-admin.resol
 import { ProductReviewEntityResolver } from './graphql/product-review-entity.resolver';
 import { ProductReviewShopResolver } from './graphql/product-review-shop.resolver';
 import path from 'path';
-import { AdminUiExtension } from '@vendure/ui-devkit/compiler';
+import { AdminUiExtension } from '@bavaan/ui-devkit/compiler';
 
 @VendurePlugin({
     imports: [PluginCommonModule],

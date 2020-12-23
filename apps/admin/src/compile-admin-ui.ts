@@ -1,4 +1,4 @@
-import { compileUiExtensions } from '@vendure/ui-devkit/compiler';
+import { compileUiExtensions } from '@bavaan/ui-devkit/compiler';
 import path from 'path';
 import { ReviewsPlugin } from '@bavaan/vendure-reviews-plugin';
 import { ProductRecommendationsPlugin } from '@bavaan/vendure-product-recommendations-plugin';

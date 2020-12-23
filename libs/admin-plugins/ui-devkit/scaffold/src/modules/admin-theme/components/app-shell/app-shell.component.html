@@ -1,0 +1,27 @@
+<clr-main-container>
+    <clr-header class="header custom-header">
+        <div class="branding">
+            <a [routerLink]="['/']"><img src="assets/logo.png" class="logo" /></a>
+        </div>
+        <div class="header-nav">
+            <div class="btn-group">
+                <vdr-main-nav></vdr-main-nav>
+            </div>
+        </div>
+        
+        <div class="header-actions">
+            <vdr-channel-switcher *vdrIfMultichannel></vdr-channel-switcher>
+            <vdr-user-menu [userName]="userName$ | async"
+                           [uiLanguage]="uiLanguage$ | async"
+                           [availableLanguages]="availableLanguages"
+                           (selectUiLanguage)="selectUiLanguage()"
+                           (logOut)="logOut()"></vdr-user-menu>
+        </div>
+    </clr-header>
+    
+    <nav class="subnav"><vdr-breadcrumb></vdr-breadcrumb></nav>
+
+    <div class="content-container">
+        <div class="content-area"><router-outlet></router-outlet></div>
+    </div>
+</clr-main-container>

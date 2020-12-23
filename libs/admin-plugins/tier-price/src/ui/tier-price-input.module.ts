@@ -5,7 +5,7 @@ import {
   OnDestroy,
   ChangeDetectorRef,
 } from "@angular/core";
-import { notify } from "@vendure/ui-devkit";
+import { notify } from "@bavaan/ui-devkit";
 import { FormControl } from "@angular/forms";
 import {
   SharedModule,

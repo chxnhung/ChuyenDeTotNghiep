@@ -4,7 +4,7 @@ import { ProductRecommendation, RecommendationType} from "./entities/product-rec
 import { ProductRecommendationAdminResolver, ProductRecommendationShopResolver, ProductRecommendationEntityResolver} from "./graphql/product-recommendations.resolver";
 import { ProductRecommendationService } from "./graphql/product-recommendations.service";
 import path from 'path';
-import { AdminUiExtension } from '@vendure/ui-devkit/compiler';
+import { AdminUiExtension } from '@bavaan/ui-devkit/compiler';
 
 export type ProductRecommendationInput = {
   product: ID;

@@ -1,0 +1,23 @@
+@import "variables";
+
+.login-wrapper {
+    background-image: url(./images/background.jpg);
+    min-height: 100vh;
+}
+.login-wrapper .login {
+    min-height: auto;
+    top: 25%;
+    position: absolute;
+}
+
+.title {
+    text-align: center;
+}
+
+.version {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: $color-grey-300;
+}

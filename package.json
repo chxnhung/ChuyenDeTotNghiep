@@ -8,10 +8,10 @@
   "workspaces": [
     "apps/*",
     "libs/*",
-    "libs/admin-plugins/*"
+    "libs/admin-plugins/**"
   ],
   "scripts": {
-    "dev": "concurrently \"yarn workspace @bavaan/admin run start\" \"yarn workspace @bavaan/storefront run dev\" \"yarn workspace @bavaan/proxy run start\"",
+    "dev": "concurrently \"yarn workspace @bavaan/admin run start\" \"yarn workspace @bavaan/storefront run dev\"",
     "build": "concurrently \"yarn workspace @bavaan/admin run build\" \"yarn workspace @bavaan/storefront run build\"",
     "test": "yarn workspace @bavaan/testing run test"
   },

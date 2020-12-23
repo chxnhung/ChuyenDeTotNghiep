@@ -1,6 +1,6 @@
 import { NgModule, Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { ID, LanguageCode } from "@vendure/core";
-import { notify } from "@vendure/ui-devkit";
+import { notify } from "@bavaan/ui-devkit";
 import { Observable, Subject, of } from "rxjs";
 import { parse } from "graphql";
 import { distinctUntilChanged, switchMap, tap } from "rxjs/operators";

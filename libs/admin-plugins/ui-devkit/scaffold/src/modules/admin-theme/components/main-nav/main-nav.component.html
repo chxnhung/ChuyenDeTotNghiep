@@ -1,0 +1,31 @@
+<ng-container *ngFor="let section of navBuilderService.navMenuConfig$ | async">
+    <clr-dropdown>
+        <button class="btn btn-outline" clrDropdownTrigger>
+            <ng-container *ngIf="navBuilderService.sectionBadges[section.id] | async as sectionBadge">
+                <div *ngIf="sectionBadge !== 'none'" class="status-badge" [class]="sectionBadge"></div>
+            </ng-container>
+            {{ section.label | translate }}
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+            <div clrDropdownItem *ngFor="let item of section.items">
+                <a
+                    class="dropdown-item"
+                    [attr.data-item-id]="section.id"
+                    [routerLink]="getRouterLink(item)"
+                    routerLinkActive="active"
+                >
+                    <ng-container *ngIf="item.statusBadge | async as itemBadge">
+                        <div
+                            *ngIf="itemBadge.type !== 'none'"
+                            class="status-badge"
+                            [class]="itemBadge.type"
+                        ></div>
+                    </ng-container>
+                    <clr-icon [attr.shape]="item.icon || 'block'" size="20"></clr-icon>
+                    {{ item.label | translate }}
+                </a>
+            </div>
+        </clr-dropdown-menu>
+    </clr-dropdown>
+</ng-container>
