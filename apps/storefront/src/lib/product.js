@@ -377,14 +377,16 @@ export const convertProductDetail = (
   const getVariantList = variantsProduct.map((item) => {
     return item;
   });
- 
+  const getPrice = getVariantList.map((item) => {
+    return item.priceWithTax;
+  });
+  console.log('getPrice',getPrice)
+
   const convertedProduct = {
     id: product.id,
     name: product.name,
     slug: product.slug,
-    price: getVariantList.map((item) => {
-      return item.priceWithTax;
-    }),
+    price: getPrice[0],
     discount: 0,
     new: true,
     rating: 4,
