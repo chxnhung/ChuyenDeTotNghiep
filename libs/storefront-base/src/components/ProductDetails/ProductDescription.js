@@ -55,11 +55,11 @@ const ProductDescription = ({
       <div className="product-content__price space-mb--20">
         {product.discount > 0 ? (
           <Fragment>
-            <span className="main-price discounted">${productPrice}</span>
-            <span className="main-price">${discountedPrice}</span>
+            <span className="main-price discounted">{productPrice}.000 VND</span>
+            <span className="main-price">{discountedPrice}.000 VND</span>
           </Fragment>
         ) : (
-          <span className="main-price">${productPrice} </span>
+          <span className="main-price">{productPrice}.000 VND</span>
         )}
       </div>
       <div className="product-content__description space-mb--30">

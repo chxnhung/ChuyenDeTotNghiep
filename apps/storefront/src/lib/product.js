@@ -350,104 +350,66 @@ export const convertProduct = (product,imageSize = {thumb: {w:200,h:300} , full:
     return convertedProduct;
 };
 
-export const convertProductDetail = (product,imageSize = {thumb: {w:200,h:300} , full:{w:600,h:800}}) => {
-    const thumbImageQuery = new URLSearchParams(imageSize.thumb).toString();
-    const fullImageQuery = new URLSearchParams(imageSize.full).toString();
-    const productVariants = [];
-    
-    const convertedProduct = {
-        "id": product.id,
-        "sku": product.sku,
-        "name": product.name,
-        "slug": product.slug,
-        "price": 0,
-        "discount": 0,
-        "new": true,
-        "rating": 4,
-        "ratingCount": 5,
-        "saleCount": 90,
-        "collections" : product.collections,
-        "category": product.collections.map((collection) => {
-            return collection.name;
-        }),
-        "tag": ["decor"],
-        "variation": [
-          {
-            "color": "black",
-            "colorCode": "#333333",
-            "image": "/assets/images/product/decor/1.jpg",
-            "size": [
-              {
-                "name": "x",
-                "stock": 3
-              },
-              {
-                "name": "m",
-                "stock": 2
-              },
-              {
-                "name": "xl",
-                "stock": 5
-              }
-            ]
-          },
-          {
-            "color": "blue",
-            "colorCode": "#1e73be",
-            "image": "/assets/images/product/decor/2.jpg",
-            "size": [
-              {
-                "name": "x",
-                "stock": 4
-              },
-              {
-                "name": "m",
-                "stock": 7
-              },
-              {
-                "name": "xl",
-                "stock": 9
-              },
-              {
-                "name": "xxl",
-                "stock": 1
-              }
-            ]
-          },
-          {
-            "color": "yellow",
-            "colorCode": "#dd9933",
-            "image": "/assets/images/product/decor/3.jpg",
-            "size": [
-              {
-                "name": "x",
-                "stock": 1
-              },
-              {
-                "name": "m",
-                "stock": 2
-              },
-              {
-                "name": "xl",
-                "stock": 4
-              },
-              {
-                "name": "xxl",
-                "stock": 0
-              }
-            ]
-          }
-        ],
-        "thumbImage": product.assets.map((asset) => {
-            return asset.preview + "?" + thumbImageQuery;
-        }),
-        "image": product.assets.map((asset) => {
-            return asset.preview + "?" + fullImageQuery;
-        }),
-        "shortDescription": product.description,
-        "fullDescription": product.description
-    }
-    return convertedProduct;
+export const convertProductsGroupVariant = (products) => {
+  return products.map((product) => {
+    return convertProductDetail(product);
+  });
+};
+
+export const convertProductDetail = (
+  product,
+  imageSize = {
+    thumb: {
+      w: 200,
+      h: 300,
+    },
+    full: {
+      w: 600,
+      h: 800,
+    },
+  }
+) => {
+  const thumbImageQuery = new URLSearchParams(imageSize.thumb).toString();
+  const fullImageQuery = new URLSearchParams(imageSize.full).toString();
+  const variantsProduct = product.variants.map((item) => {
+    return { ...item };
+  });
+  const getVariantList = variantsProduct.map((item) => {
+    return item;
+  });
+ 
+  const convertedProduct = {
+    id: product.id,
+    name: product.name,
+    slug: product.slug,
+    price: getVariantList.map((item) => {
+      return item.priceWithTax;
+    }),
+    discount: 0,
+    new: true,
+    rating: 4,
+    ratingCount: 5,
+    variants: {
+      productVariantList: product.variants.map((item) => {
+        return { ...item };
+      }),
+    },
+    saleCount: 90,
+    collections: product.collections,
+    category: product.collections.map((collection) => {
+      return collection.name;
+    }),
+    tag: ["decor"],
+    thumbImage: product.assets.map((asset) => {
+      return asset.preview + "?" + thumbImageQuery;
+    }),
+    image: product.assets.map((asset) => {
+      return asset.preview + "?" + fullImageQuery;
+    }),
+    shortDescription: product.description,
+    fullDescription: product.description,
+  };
+  return convertedProduct;
 };
 
 export const productSkeleton = (imageSize = {thumb: {w:200,h:300} , full:{w:600,h:800}}) => {

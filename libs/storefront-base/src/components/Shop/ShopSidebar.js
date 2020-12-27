@@ -114,8 +114,8 @@ const ShopSidebar = ({ products, getSortParams }) => {
               const discountedPrice = getDiscountPrice(
                 product.price,
                 product.discount
-              ).toFixed(2);
-              const productPrice = product.price.toFixed(2);
+              ).toFixed(3);
+              const productPrice = product.price.toFixed(3);
               return (
                 <div className="single-widget-product-wrapper" key={i}>
                   <div className="single-widget-product">
@@ -155,14 +155,14 @@ const ShopSidebar = ({ products, getSortParams }) => {
                           {product.discount > 0 ? (
                             <Fragment>
                               <span className="main-price discounted">
-                                ${productPrice}
+                                {productPrice} VND
                               </span>
                               <span className="discounted-price">
-                                ${discountedPrice}
+                                {discountedPrice} VND
                               </span>
                             </Fragment>
                           ) : (
-                            <span className="main-price">${productPrice}</span>
+                            <span className="main-price">{productPrice} VND</span>
                           )}
                         </div>
                         <div className="rating">

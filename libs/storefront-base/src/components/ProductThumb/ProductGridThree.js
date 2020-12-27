@@ -179,11 +179,11 @@ const ProductGridThree = ({
           <div className="price">
             {product.discount > 0 ? (
               <Fragment>
-                <span className="main-price discounted">${productPrice}</span>
-                <span className="discounted-price">${discountedPrice}</span>
+                <span className="main-price discounted">{productPrice} VND</span>
+                <span className="discounted-price">{discountedPrice} VND</span>
               </Fragment>
             ) : (
-              <span className="main-price">${productPrice}</span>
+              <span className="main-price">{productPrice} VND</span>
             )}
           </div>
         </div>

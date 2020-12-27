@@ -71,17 +71,22 @@ const ProductDetail = ({
     document.querySelector("body").classList.remove("overflow-hidden");
   });
   const router = useRouter();
-  const queryProductDetail = useQuery(GET_PRODUCT_DETAIL, {variables:{slug:router.query.slug}});
+  const queryProductDetail = useQuery(GET_PRODUCT_DETAIL, {
+    variables: { slug: router.query.slug },
+  });
 
-  const product = queryProductDetail.data  ? convertProductDetail(queryProductDetail.data.product) : productSkeleton();
+  const product = queryProductDetail.data
+    ? convertProductDetail(queryProductDetail.data.product)
+    : productSkeleton();
 
   const { addToast } = useToasts();
   const discountedPrice = getDiscountPrice(
     product.price,
     product.discount
-  ).toFixed(2);
+  );
 
-  const productPrice = product.price.toFixed(2);
+  const productPrice = product.price;
+  console.log('product',product)
   const cartItem = cartItems.filter(
     (cartItem) => cartItem.id === product.id
   )[0];

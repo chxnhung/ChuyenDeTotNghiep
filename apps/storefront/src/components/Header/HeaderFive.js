@@ -15,16 +15,16 @@ import {
   IoLogoInstagram,
   IoLogoYoutube
 } from "react-icons/io";
-import {TextBlock, MediaBlock, TextRow, RectShape, RoundShape} from 'react-placeholder/lib/placeholders';
+import { TextBlock, MediaBlock, TextRow, RectShape, RoundShape } from 'react-placeholder/lib/placeholders';
 import Navigation from "./elements/Navigation";
 import AboutOverlay from "./elements/AboutOverlay";
 import SearchOverlay from "./elements/SearchOverlay";
 import CartOverlay from "./elements/CartOverlay";
 import WishlistOverlay from "./elements/WishlistOverlay";
 import MobileMenu from "./elements/MobileMenu";
-import {arrayToTree} from "../../lib/array-to-tree";
-import {convertCollections} from '../../lib/collection';
-import {GET_COLLECTIONS} from '@bavaan/graphql/documents.graphql';
+import { arrayToTree } from "../../lib/array-to-tree";
+import { convertCollections } from '../../lib/collection';
+import { GET_COLLECTIONS } from '@bavaan/graphql/documents.graphql';
 
 const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
   const [scroll, setScroll] = useState(0);
@@ -37,7 +37,7 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
   const [offCanvasMobileMenuActive, setOffCanvasMobileMenuActive] = useState(
     false
   );
-  
+
 
   useEffect(() => {
     const header = document.querySelector("header");
@@ -142,7 +142,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
                 <Link href="/" as={process.env.PUBLIC_URL + "/"}>
                   <a>
                     <img
-                      src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
+                      style={{ width: "140px", height: "100px" }}
+                      src={process.env.PUBLIC_URL + "/assets/images/logo.jpg"}
                       className="img-fluid"
                       alt=""
                     />
@@ -151,7 +152,7 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
               </div>
 
               {/* navigation */}
-              {queryCollections.loading ? <TextBlock rows={3} color="#e2e2e2"/> :<Navigation menu={arrayToTree(convertCollections(queryCollections.data.collections.items,{w:180,h:413}))}/> }
+              {queryCollections.loading ? <TextBlock rows={3} color="#e2e2e2" /> : <Navigation menu={arrayToTree(convertCollections(queryCollections.data.collections.items, { w: 180, h: 413 }))} />}
 
               {/* icons */}
               <div className="header-content__icons space-pl--15">
@@ -193,8 +194,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
                           {wishlistItems.length ? wishlistItems.length : ""}
                         </span>
                       ) : (
-                        ""
-                      )}
+                          ""
+                        )}
                     </button>
                   </li>
                   <li>
@@ -212,8 +213,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
                           {cartItems.length ? cartItems.length : ""}
                         </span>
                       ) : (
-                        ""
-                      )}
+                          ""
+                        )}
                     </button>
                   </li>
                 </ul>
@@ -231,8 +232,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
                             {wishlistItems.length ? wishlistItems.length : ""}
                           </span>
                         ) : (
-                          ""
-                        )}
+                            ""
+                          )}
                       </a>
                     </Link>
                   </li>
@@ -248,8 +249,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
                             {cartItems.length ? cartItems.length : ""}
                           </span>
                         ) : (
-                          ""
-                        )}
+                            ""
+                          )}
                       </a>
                     </Link>
                   </li>
@@ -269,11 +270,11 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
       {aboutOverlay === false ? (
         ""
       ) : (
-        <AboutOverlay
-          activeStatus={offCanvasAboutActive}
-          getActiveStatus={setOffCanvasAboutActive}
-        />
-      )}
+          <AboutOverlay
+            activeStatus={offCanvasAboutActive}
+            getActiveStatus={setOffCanvasAboutActive}
+          />
+        )}
       {/* search overlay */}
       <SearchOverlay
         activeStatus={offCanvasSearchActive}
@@ -292,9 +293,9 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
         getActiveStatus={setOffCanvasWishlistActive}
       />
       {/* Mobile Menu */}
-      {queryCollections.loading ? null : 
+      {queryCollections.loading ? null :
         <MobileMenu
-          menu={arrayToTree(convertCollections(queryCollections.data.collections.items,{w:180,h:413}))} 
+          menu={arrayToTree(convertCollections(queryCollections.data.collections.items, { w: 180, h: 413 }))}
           activeStatus={offCanvasMobileMenuActive}
           getActiveStatus={setOffCanvasMobileMenuActive}
         />

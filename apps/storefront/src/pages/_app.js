@@ -25,7 +25,7 @@ class MyApp extends App {
     return (
       <Fragment>
         <Head>
-          <title>Swarajshop | Marketplace</title>
+          <title>HNH | HNUE | Store</title>
         </Head>
         <ToastProvider placement="bottom-left">
           <Provider store={reduxStore}>
