@@ -99,8 +99,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
               <div className="header-top__right">
                 <div className="signup-link">
                   <Link
-                    href="/other/login-register"
-                    as={process.env.PUBLIC_URL + "/other/login-register"}
+                    href="/customer/login"
+                    as={process.env.PUBLIC_URL + "/customer/login"}
                   >
                     <a>Signup / Login</a>
                   </Link>
@@ -171,8 +171,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
                   </li>
                   <li>
                     <Link
-                      href="/other/login-register"
-                      as={process.env.PUBLIC_URL + "/other/login-register"}
+                      href="/customer/register"
+                      as={process.env.PUBLIC_URL + "/customer/register"}
                     >
                       <a>
                         <IoMdPerson />

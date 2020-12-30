@@ -9,6 +9,7 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [registerReq] = useMutation(REGISTER, {});
   const { addToast } = useToasts();
 
@@ -29,9 +30,10 @@ export default function SignUp() {
                     registerReq({
                       variables: {
                         input: {
-                          firstName,
-                          lastName,
+                          firstName: firstName,
+                          lastName: lastName,
                           emailAddress: email,
+                          password: password
                         },
                       },
                     })
@@ -95,6 +97,19 @@ export default function SignUp() {
                         }}
                         type="email"
                         id="regEmail"
+                        required
+                      />
+                    </Col>
+                    <Col lg={12} className="space-mb--30">
+                      <label htmlFor="regEmail">
+                        Pass word <span className="required">*</span>{" "}
+                      </label>
+                      <input
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
+                        type="password"
+                        id="regPassword"
                         required
                       />
                     </Col>
