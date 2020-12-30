@@ -1,0 +1,125 @@
+.input-search {
+    * {
+        box-sizing: border-box;
+    }
+
+    padding: 0 5%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .js-search {
+        border: solid 1px #FC3A59 !important;
+        position: relative;
+        padding: 7px 40px 7px 20px;
+        width: 20px;
+        color: #FC3A59;
+        font-size: 14px;
+        font-weight: 100;
+        border: none;
+        border-radius: 5px;
+        background: linear-gradient(to right, #FFFFFF 0%, #464747 #F9F9F9 100%);
+        transition: width 0.4s ease;
+        outline: none;
+        width: 100%;
+    }
+
+
+
+    button {
+        border: none;
+        background-color: #FC3A59;
+        position: relative;
+        left: -37px;
+        border-radius: 0 5px 5px 0;
+        padding: 7px 11px 7px 10px;
+        color: white;
+    }
+
+    .search-result {
+        &:only-child {
+            width: 70vw;
+        }
+
+        position: absolute;
+        width: 100%;
+        top: 66px;
+        z-index: 1001;
+    }
+
+    &__mobile {
+        * {
+            box-sizing: border-box;
+        }
+
+        padding: 0 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .search-bar {
+            width: 100%;
+        }
+
+        .js-search {
+            border: solid 1px #FC3A59 !important;
+            position: relative;
+            padding: 7px 40px 7px 20px;
+            width: 20px;
+            color: #FC3A59;
+            font-size: 14px;
+            font-weight: 100;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(to right, #FFFFFF 0%, #464747 #F9F9F9 100%);
+            transition: width 0.4s ease;
+            outline: none;
+            width: 100%;
+        }
+
+
+
+        button {
+            border: none;
+            background-color: #FC3A59;
+            position: relative;
+            left: -37px;
+            border-radius: 0 5px 5px 0;
+            padding: 7px 11px 7px 10px;
+            color: white;
+        }
+
+        .search-result {
+
+            .row>div {
+                display: flex;
+                .rating {
+                    display: flex;
+                }
+            }
+
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            top: -32px;
+            z-index: 1;
+            width: calc(85vw - 60px);
+
+            .card {
+                width: 100%;
+                border-top: none;
+                border-radius: 0;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        display: none;
+    }
+}

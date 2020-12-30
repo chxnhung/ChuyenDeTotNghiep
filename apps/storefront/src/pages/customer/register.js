@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { Container, Row, Col } from "react-bootstrap";
-import LayoutTwo from "@bavaan/storefront-base/src/components/Layout/LayoutTwo";
+import LayoutFive from "../../components/Layout/LayoutFive";
 import { REGISTER } from "@bavaan/graphql/customer/register.graphql";
 import { useToasts } from "react-toast-notifications";
+import { useRouter } from "next/router";
+import { SIGN_IN } from "@bavaan/graphql/customer/sign-in.graphql";
 
-export default function SignUp() {
+const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registerReq] = useMutation(REGISTER, {});
   const { addToast } = useToasts();
+  const router = useRouter();
+  const [loginReq] = useMutation(SIGN_IN, {});
 
   return (
-    <LayoutTwo>
+    <LayoutFive>
       {/* breadcrumb */}
       <div className="login-area space-mt--r130 space-mb--r130">
         <Container>
@@ -30,10 +34,10 @@ export default function SignUp() {
                     registerReq({
                       variables: {
                         input: {
-                          firstName: firstName,
-                          lastName: lastName,
+                          firstName,
+                          lastName,
                           emailAddress: email,
-                          password: password
+                          password,
                         },
                       },
                     })
@@ -45,6 +49,30 @@ export default function SignUp() {
                             appearance: "success",
                             autoDismiss: true,
                           });
+
+                          loginReq({
+                            variables: {
+                              emailAddress: email,
+                              password: password,
+                              rememberMe: false,
+                            },
+                          })
+                            .then((data) => {
+                              if (data.errors || data.message) {
+                                throw {
+                                  message: "Incorrect username or password",
+                                };
+                              } else router.push("/");
+                            })
+                            .catch((e) => {
+                              addToast(
+                                e.message || "Cannot login with this customer",
+                                {
+                                  appearance: "error",
+                                  autoDismiss: true,
+                                }
+                              );
+                            });
                         } else {
                           throw {
                             message:
@@ -100,11 +128,12 @@ export default function SignUp() {
                         required
                       />
                     </Col>
-                    <Col lg={12} className="space-mb--30">
-                      <label htmlFor="regEmail">
-                        Pass word <span className="required">*</span>{" "}
+                    <Col lg={12} className="space-mb--40">
+                      <label htmlFor="regPassword">
+                        Password <span className="required">*</span>{" "}
                       </label>
                       <input
+                        value={password}
                         onChange={(e) => {
                           setPassword(e.target.value);
                         }}
@@ -125,6 +154,7 @@ export default function SignUp() {
           </Row>
         </Container>
       </div>
-    </LayoutTwo>
+    </LayoutFive>
   );
-}
+};
+export default SignUp;

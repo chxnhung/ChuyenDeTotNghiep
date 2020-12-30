@@ -50,6 +50,7 @@ export const GET_TOP_SELLERS = gql`
             sort: {
                 price: ASC
             }
+            skip: 10
         }) {
             items {
                 productId
@@ -110,6 +111,7 @@ export const GET_PRODUCT_DEAL_OF_THE_WEEK = gql`
             sort: {
                 price: ASC
             }
+            skip: 20
         }) {
             items {
                 productId
@@ -140,6 +142,7 @@ export const GET_PRODUCT_ARRIVALS = gql`
             sort: {
                 price: ASC
             }
+            skip: 30
         }) {
             items {
                 productId
@@ -200,6 +203,7 @@ export const GET_PRODUCT_LASTEST = gql`
             sort: {
                 price: ASC
             }
+            skip: 40
         }) {
             items {
                 productId
@@ -230,6 +234,7 @@ export const GET_PRODUCT_NEWS = gql`
             sort: {
                 price: ASC
             }
+            skip: 5
         }) {
             items {
                 productId
@@ -280,4 +285,44 @@ export const GET_PRODUCT_FEATURED = gql`
             }
         }
     }
+`;
+
+export const SEARCH_PRODUCT_WITH_NAME = gql`
+  query searchProductWithName($options: ProductListOptions!) {
+    products(options: $options) {
+      items {
+        slug
+        id
+        name
+        description
+        variants {
+          id
+          name
+          price
+          priceWithTax
+          sku
+          currencyCode
+        }
+        featuredAsset {
+          ...Asset
+        }
+        assets {
+          ...Asset
+        }
+        collections {
+          id
+          name
+          slug
+          featuredAsset {
+            ...Asset
+          }
+          breadcrumbs {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+  ${ASSET_FRAGMENT}
 `;

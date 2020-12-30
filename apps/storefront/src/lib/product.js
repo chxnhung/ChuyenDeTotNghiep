@@ -438,3 +438,38 @@ export const productSkeleton = (imageSize = {thumb: {w:200,h:300} , full:{w:600,
   }
   return product;
 };
+
+export const filterShowUpMaxMinProductPrice = (product) => {
+  if (product && product.priceWithTax && product.priceWithTax.min) {
+    const formatter = formatterConvertCurrency(product.currencyCode);
+    if (product.priceWithTax.min === product.priceWithTax.max) {
+      return formatter.format(product.priceWithTax.min);
+    }
+    return `${formatter.format(product.priceWithTax.min)} - ${
+      product.priceWithTax.max
+    }`;
+  }
+  if (product.variants && product.variants.productVariantList.length) {
+    const productPriceArray = product.variants.productVariantList.map(
+      (item) => {
+        return { price: item.priceWithTax, formatter: item.formatter };
+      }
+    );
+    if (productPriceArray.length <= 1)
+      return `${productPriceArray[0].formatter.format(
+        productPriceArray[0].price
+      )}`;
+
+    const productPriceSort = productPriceArray.sort(
+      (a, b) => a.price - b.price
+    );
+    const priceMin = productPriceSort[0];
+    const priceMax = productPriceSort[productPriceSort.length - 1];
+    if (priceMin.price == priceMax.price)
+      return priceMin.formatter.format(priceMin.price);
+    return `${priceMin.formatter.format(
+      priceMin.price
+    )} - ${priceMax.formatter.format(priceMax.price)}`;
+  }
+  return null;
+};
