@@ -171,8 +171,8 @@ const HeaderFive = ({ aboutOverlay, cartItems, wishlistItems }) => {
                   </li>
                   <li>
                     <Link
-                      href="/customer/register"
-                      as={process.env.PUBLIC_URL + "/customer/register"}
+                      href="/customer/login"
+                      as={process.env.PUBLIC_URL + "/customer/login"}
                     >
                       <a>
                         <IoMdPerson />
